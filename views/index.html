@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cake Studio - Sweeten Your Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Static Background Image */
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('back.png'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: white;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background-color: transparent;
+      padding: 0;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #ffdd59;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #f0f0f0;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #ff6f61;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #e55547;
+      transform: scale(1.05);
+    }
+
+    .login-link {
+      display: block;
+      margin-top: 25px;
+      font-size: 0.95rem;
+      color: #eee;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .login-link:hover {
+      color: #ffdd59;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #ffdd59;
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Static Background Image -->
+  <div class="background-image"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Background overlay -->
+  <div class="overlay"></div>
+
+  <!-- Content container -->
+  <div class="container">
+    <img src="logo.png" alt="Cake Logo" class="logo-img" />
+    <h1>Welcome to Cake Studio 🎂</h1>
+    <p>Where every bite is a celebration! Handmade cakes, cupcakes, and desserts crafted with love and creativity.</p>
+    <a href="/signup.html" class="btn">Join the Sweet Journey</a>
+    <a href="/login.html" class="login-link">Already a member? Login here</a>
+  </div>
+
+  <script>
+    // Fade out loader after page loads
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile - Sweet Treats</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f3f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px 20px;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      max-width: 1000px;
+      background-color: #96d6e3;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ee7fb9;
+      color: white;
+      padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .profile-section {
+      flex: 1;
+      padding: 30px 40px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #ee7fb9;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .profile-header h3 {
+      font-size: 22px;
+      color: #333;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 40px;
+    }
+
+    .info-item label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .info-item p {
+      color: #333;
+      font-size: 15px;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        text-align: center;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>My Account</h2>
+    
+      <p>
+  <a href="/home.html" style="
+    background-color: #96d6e3;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+  ">Back to Home</a>
+  </p>
+<hr>
+  <p>
+  <a href="/myOrders.html" style="
+    background-color: #96d6e3;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+  ">  My Orders  </a></p>
+
+
+    </div>
+
+    <div class="profile-section">
+      <div class="profile-header">
+        <div class="avatar" id="avatar">?</div>
+        <h3 id="user-name">User</h3>
+      </div>
+
+      <div class="info-grid" id="profile-info">
+        <!-- User info will load here -->
+        <p>Loading user details...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch('/profiledata')
+      .then(res => {
+        if (!res.ok) throw new Error("Unauthorized");
+        return res.json();
+      })
+      .then(data => {
+        const avatarLetter = (data.fullName || data.username || '?')[0].toUpperCase();
+        document.getElementById('avatar').textContent = avatarLetter;
+        document.getElementById('user-name').textContent = data.fullName || data.username;
+
+        document.getElementById('profile-info').innerHTML = `
+          <div class="info-item">
+            <label>Username</label>
+            <p>${data.username || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Full Name</label>
+            <p>${data.fullName || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Email</label>
+            <p>${data.email || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Phone</label>
+            <p>${data.phone || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Address</label>
+            <p>${data.address || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Gender</label>
+            <p>${data.gender || ''}</p>
+          </div>
+          <div class="info-item">
+            <label>Date of Birth</label>
+            <p>${data.dob ? new Date(data.dob).toLocaleDateString() : ''}</p>
+          </div>
+        `;
+      })
+      .catch(err => {
+        alert('Please log in to view your profile.');
+        window.location.href = '/login.html';
+      });
+  </script>
+</body>
+</html>

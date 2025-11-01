@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign Up - Sweet Treats</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffe6f0, #fff5f8);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+             background-image: url(background.png);
+        }
+
+        .background-overlay {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff69b4;
+        }
+
+        input, select { /* Added select to styling */
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        .signup-text {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #ff69b4;
+            text-decoration: none;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay">
+        <div class="login-box">
+            <h1 class="logo">Join Cake Studio 🎂</h1>
+            <form action="/signup" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+
+                <input type="text" name="fullName" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="text" name="address" placeholder="Address" required>
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="date" name="dob" placeholder="Date of Birth" required> <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

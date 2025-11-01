@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cake Shop - Delicious Cakes for Every Occasion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS can go here if needed, overriding or extending Tailwind */
+        body {
+            background-color: #FEEBC8; /* Tailwind's orange-200 color code */
+        }
+        header {
+            background-color: #e56634; /* Tailwind's orange-700 color code */
+        }
+
+        .hero-section {
+            background: url("fondant.jpg") no-repeat center center/cover;
+            height: 60vh; /* Adjust as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(14, 9, 9);
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+        .hero-content {
+            z-index: 1;
+        }
+        .back-link {
+            display: inline-block;
+            color: #f58b20f3;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 15px;
+            border: 2px solid #f58b20f3;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f58b20f3;
+            color: white;
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
+<div class="header">
+    <header class="bg-orange-800 shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px- -5">
+            <a href="cake.html" class="bg-red-600 text-white py-2 px-5 rounded-full
+                                         hover:bg-red-700 transition duration-300 ease-in-out
+                                         shadow-md hover:shadow-lg text-base font-semibold">
+                ← Back
+            </a>
+
+            <a href="#" class="text-3xl font-bold text-white">The Cake Studio</a>
+
+            <div class="w-20"></div>
+        </div>
+    </header>
+</div>
+    <section id="cakes" class="py-16 bg-orange-300">
+        <div class="container mx-auto px-4">
+    <section id="contact" class="py-16 bg-orange-200">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">Contact Us</h1>
+
+            <div class="max-w-3xl mx-auto bg-pink-100 p-8 rounded-lg shadow-xl">
+                <p class="text-gray-700 mb-6 text-center">Have a question about an order, want to discuss a custom cake, or just want to say hello? We'd love to hear from you!</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Get in Touch</h3>
+                        <p class="text-gray-700 mb-2"><strong>Phone:</strong> +91 98765 43210</p>
+                        <p class="text-gray-600 text-sm mb-4">(Available 10:00 AM - 7:00 PM IST, Monday - Saturday)</p>
+                        <p class="text-gray-700"><strong>Email:</strong> info@thecakestudio.com</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Location</h3>
+                        <p class="text-gray-700"><strong>The Cake Studio</strong></p>
+                        <p class="text-gray-700">Shop 5C & 5D, Nikhil Pride, Tilak Rd,</p>
+                        <p class="text-gray-700">Opp. Chitale Ice Cream, Next to Kaka Halwai,</p>
+                        <p class="text-gray-700">Vijayanagar Colony, Sadashiv Peth, Pune,</p>
+                        <p class="text-gray-700">Maharashtra 411030, India</p>
+                        <p class="mt-2">
+                            <a href="https://www.google.com/maps/place/The+Cake+Studio/@18.5058579,73.8525228,21z/data=!4m11!1m3!2m2!1sthe+cake+studio+pune+location!6e5!3m6!1s0x3bc2c07383a386c5:0xbfceacfd4909aea2!8m2!3d18.5058581!4d73.85282!15sCh10aGUgY2FrZSBzdHVkaW8gcHVuZSBsb2NhdGlvblofIh10aGUgY2FrZSBzdHVkaW8gcHVuZSBsb2NhdGlvbpIBCWNha2Vfc2hvcKoBagoNL2cvMTFjbXRiOGR6cxABKhMiD3RoZSBjYWtlIHN0dWRpbygAMh8QASIbyI-HV63rgR84MhvxWvmYwdwJ8JaL19HvnCPDMiEQAiIddGhlIGNha2Ugc3R1ZGlvIHB1bmUgbG9jYXRpb27gAQA!16s%2Fg%2F11cmtb8dzs?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-pink-600 hover:underline">View on Google Maps</a>
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Send Us a Message</h3>
+                <form id="contactForm" action="[Your form submission URL]" method="POST" class="mt-6 p-6 bg-white rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Name:</label>
+                        <input type="text" id="name" name="name" required
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email:</label>
+                        <input type="email" id="email" name="email" required
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Your Phone Number (Optional):</label>
+                        <input type="tel" id="phone" name="phone"
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Your Message:</label>
+                        <textarea id="message" name="message" rows="5" required
+                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit"
+                                class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Send Message
+                        </button>
+                    </div>
+                    <p id="payment-status-message" class="mt-6 p-3 rounded-md text-center text-lg hidden"></p>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Business Hours</h3>
+                    <p class="text-gray-700"><strong>Monday - Saturday:</strong> 09:00 AM - 10:00 PM</p>
+                    <p class="text-gray-700"><strong>Sunday:</strong> Closed (for special pre-orders and events only)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 The Cake Studio. All rights reserved.</p>
+            <p class="mt-2 text-sm">Made with <span class="text-red-500">♥</span> by The Cake Studio</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+ <script>
+  const form = document.getElementById('contactForm');
+  const paymentStatusMessage = document.getElementById('payment-status-message');
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      message: form.message.value
+    };
+
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        paymentStatusMessage.textContent = 'Message sent successfully! We will get back to you soon.';
+        paymentStatusMessage.classList.remove('hidden');
+        paymentStatusMessage.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-400');
+        form.reset();
+
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 4000);
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      paymentStatusMessage.textContent = 'Something went wrong. Please try again.';
+      paymentStatusMessage.classList.remove('hidden');
+      paymentStatusMessage.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-400');
+    }
+  });
+</script>
+
+</body>
+</html>

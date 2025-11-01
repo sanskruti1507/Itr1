@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cake Studio - Delicious Cakes for Every Occasion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+   <style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: rgb(213, 123, 186);
+    }
+    /* Custom styling for file input to ensure it looks good across browsers */
+    input[type="file"]::file-selector-button {
+        /* Replaced @apply with equivalent CSS properties */
+        margin-right: 1rem; /* mr-4 */
+        padding-top: 0.5rem; /* py-2 */
+        padding-bottom: 0.5rem; /* py-2 */
+        padding-left: 1rem; /* px-4 */
+        padding-right: 1rem; /* px-4 */
+        border-radius: 9999px; /* rounded-full */
+        border-width: 0px; /* border-0 */
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 600; /* font-semibold */
+        background-color: #f15bc9; /* bg-violet-50 */
+        color: #6d28d9; /* text-violet-700 */
+        /* For hover, you'll need to use inline styles or more specific CSS/JS */
+    }
+    input[type="file"]::file-selector-button:hover {
+        background-color: #ede9fe; /* hover:bg-violet-100 */
+    }
+
+    .yellow-strip {
+        background-color: #ffd700; /* A nice yellow color */
+        height: 8px;
+        width: 100%;
+        margin: 2rem 0;
+        border-radius: 4px;
+    }
+    .back-link {
+  display: inline-block;
+  color: #f58b20f3;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border: 2px solid #f58b20f3;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #f58b20f3;
+  color: white;
+}
+</style>
+</head>
+<body class="bg-orange-200 text-gray-800">
+
+    <header class="bg-white shadow-md py-4 px-8 sticky top-0 z-50 relative">
+    <a href="about.html" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-700 hover:text-red-600 transition text-base font-semibold bg-red-600 text-white py-1 px-4 rounded-full hover:bg-red-700 transition">
+        &#8592; Back
+    </a>
+
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <a href="#" class="text-4xl font-bold text-red-600 mb-4 md:mb-0">The Cake Studio</a>
+       
+        <nav class="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 text-base font-semibold md:flex-grow">
+            <a href="#cakes-by-type-main" class="text-gray-700 hover:text-red-600 transition">By Type</a>
+            <a href="#cakes-by-flavour-main" class="text-gray-700 hover:text-red-600 transition">By Flavour</a>
+            <a href="#premium-flavours" class="text-gray-700 hover:text-red-600 transition">Fusion & Premium Flavours</a>
+            <a href="#cakes-by-theme" class="text-gray-700 hover:text-red-600 transition">By Theme</a>
+            <a href="#custom-cake" class="text-gray-700 hover:text-red-600 transition">Custom Order</a>
+
+        </nav>
+
+       <div class="flex items-center ml-4 md:ml-0">
+    <a href="cart.html" id="cart-button" class="bg-red-600 text-white  p-2 rounded-md hover:bg-orange-200 flex items-center inline-block">
+    <img src="car.png" alt="Shopping Cart Logo" style="width: 30px; height: auto; margin-right: 12px;">
+    Cart (<span id="cart-count">0</span>)
+</a>
+</div>
+    </div>
+</header>
+
+    <main class="container mx-auto p-8">
+
+        <section id="cakes-by-type-main" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Cakes By Type</h2>
+
+            <h3 class="text-4xl font-bold text-center mb-8 text-gray-800">Regular Cakes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="1">
+                    <img src="chocolate.jpeg" alt="Decadent Chocolate Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Chocolate Cake</h3>
+                        <p class="text-gray-600 mb-4">Rich, moist chocolate cake with a luscious ganache frosting. A sweet ending!</p>
+                        <div class="mb-4">
+                            <label for="regular-chocolate-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="regular-chocolate-cake-weight" name="regular-chocolate-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('regular-chocolate-cake')">
+                                <option value="0.5kg" data-price="7.50">500g - ₹600</option>
+                                <option value="1kg" data-price="14.00">1kg -₹1200</option>₹
+                                <option value="1.5kg" data-price="20.00">1.5kg - ₹1800</option>
+                                 
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="regular-chocolate-cake-price">₹600</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="2">
+                    <img src="mocha.jpeg" alt="Mocha Coffee Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Mocha Coffee Cake</h3>
+                        <p class="text-gray-600 mb-4">Rich coffee-flavored sponge with mocha buttercream, a perfect pick-me-up.</p>
+                        <div class="mb-4">
+                            <label for="coffee-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="coffee-cake-weight" name="coffee-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('coffee-cake')">
+                                <option value="0.5kg" data-price="7.50">500g - ₹500</option>
+                                <option value="1kg" data-price="14.00">1kg - ₹1000</option>
+                               
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="coffee-cake-price">₹500</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="3">
+                    <img src="black forest cake.jpeg" alt="Black Forest Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Black Forest Cake </h3>
+                        <p class="text-gray-600 mb-4">Layers of chocolate sponge, whipped cream, adorned with chocolate shavings.</p>
+                        <div class="mb-4">
+                            <label for="flavour-black-forest-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="flavour-black-forest-cake-weight" name="flavour-black-forest-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('flavour-black-forest-cake')">
+                                <option value="0.5kg" data-price="8.25">500g - ₹450</option>
+                                <option value="1kg" data-price="15.50">1kg - ₹850</option>
+                                <option value="1.5kg" data-price="22.50">1.5kg - ₹1250</option>
+                             
+                            </select>
+                       
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="flavour-black-forest-cake-price">₹350</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="4">
+                    <img src="butter scotch cake.jpeg" alt="Butterscotch Caramel Crunch Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Butterscotch Caramel Crunch Cake</h3>
+                        <p class="text-gray-600 mb-4">Moist butterscotch cake with caramel drizzle and crunchy butterscotch bits.</p>
+                        <div class="mb-4">
+                            <label for="flavour-butterscotch-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="flavour-butterscotch-cake-weight" name="flavour-butterscotch-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('flavour-butterscotch-cake')">
+                                <option value="0.5kg" data-price="7.00">500g - ₹400</option>
+                                <option value="1kg" data-price="13.00">1kg - ₹700</option>
+                                <option value="1.5kg" data-price="19.00">1.5kg - ₹900</option>
+                             
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="flavour-butterscotch-cake-price">₹400</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+           
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="5">
+                    <img src="red velvet cake.jpeg" alt="Red Velvet Delight Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Red Velvet Delight Cake</h3>
+                        <p class="text-gray-600 mb-4">Vibrant red velvet cake with tangy cream cheese frosting. Pure indulgence!</p>
+                        <div class="mb-4">
+                            <label for="flavour-red-velvet-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="flavour-red-velvet-cake-weight" name="flavour-red-velvet-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('flavour-red-velvet-cake')">
+                                <option value="0.5kg" data-price="8.00">500g - ₹650</option>
+                                <option value="1kg" data-price="15.00">1kg - ₹1200</option>
+                                <option value="1.5kg" data-price="21.50">1.5kg - ₹1700</option>
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="flavour-red-velvet-cake-price">₹650</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="6">
+                    <img src="vanilla.jpg" alt="Classic Vanilla Bean Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Classic Vanilla Bean Cake</h3>
+                        <p class="text-gray-600 mb-4">Fluffy vanilla bean cake with smooth buttercream frosting. A timeless favorite.</p>
+                        <div class="mb-4">
+                            <label for="regular-vanilla-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="regular-vanilla-cake-weight" name="regular-vanilla-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('regular-vanilla-cake')">
+                                <option value="0.5kg" data-price="7.00">500g - ₹600</option>
+                                <option value="1kg" data-price="13.00">1kg - ₹1100</option>
+                                <option value="1.5kg" data-price="19.00">1.5kg - ₹1600</option>
+                           
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="regular-vanilla-cake-price">₹600</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="cakes-by-flavour-main" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Cakes By Flavour</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="7">
+                    <img src="Spring Blossom Floral Cake.jpg" alt="Spring Blossom Floral Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Spring Blossom Floral Cake</h3>
+                        <p class="text-gray-600 mb-4">Delicate floral sponge with light, airy buttercream and edible blossoms.</p>
+                        <div class="mb-4">
+                            <label for="floral-blossom-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="floral-blossom-cake-weight" name="floral-blossom-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('floral-blossom-cake')">
+                                <option value="1kg" data-price="40.00">1kg -₹800 </option>
+                                <option value="1.5kg" data-price="55.00">1.5kg -₹1400 </option>
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="floral-blossom-cake-price">₹1700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="8">
+                    <img src="fresh flower.jpeg" alt="Fresh Flowers Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Fresh Flowers Cake</h3>
+                        <p class="text-gray-600 mb-4">A beautiful cake decorated with an assortment of fresh, edible flowers.</p>
+                        <div class="mb-4">
+                            <label for="fresh-flowers-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="fresh-flowers-cake-weight" name="fresh-flowers-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('fresh-flowers-cake')">
+                                <option value="1kg" data-price="45.00">1kg -₹900 </option>
+                                <option value="1.5kg" data-price="60.00">1.5kg -₹1600 </option>
+                               
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="fresh-flowers-cake-price">₹900</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="9">
+                    <img src="flower basket.jpeg" alt="Flower Basket Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Flower Basket Cake</h3>
+                        <p class="text-gray-600 mb-4">A delightful cake crafted to look like a basket overflowing with edible flowers.</p>
+                        <div class="mb-4">
+                            <label for="flower-basket-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="flower-basket-cake-weight" name="flower-basket-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('flower-basket-cake')">
+                                <option value="1kg" data-price="50.00">1kg - ₹850</option>
+                                <option value="1.5kg" data-price="65.00">1.5kg - ₹1300</option>
+                               
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="flower-basket-cake-price">₹850</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="luxury-design-cakes" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Luxury Design Cakes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="10">
+                    <img src="drip.jpeg" alt="Sparkle Drip Opulence Cake" class="w-full h-64 object-cover" id="sparkle-drip-cake-image">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Sparkle Drip Opulence Cake</h3>
+                        <p class="text-gray-600 mb-4">A stunning cake with elegant sparkle drip design and luxurious accents. Choose your drip color!</p>
+                        <div class="mb-4">
+                            <label for="sparkle-drip-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="sparkle-drip-cake-weight" name="sparkle-drip-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('sparkle-drip-cake')">
+                                <option value="1kg" data-price="60.00">1kg - ₹700</option>
+                                <option value="1.5kg" data-price="75.00">1.5kg -₹1200 </option>
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="sparkle-drip-cake-price">₹700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="11">
+                    <img src="fondant.jpg" alt="Elegant Fondant Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Elegant Fondant Cake</h3>
+                        <p class="text-gray-600 mb-4">Sophisticated cake covered in smooth, decorative fondant. Perfect for special occasions.</p>
+                        <div class="mb-4">
+                            <label for="fondant-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="fondant-cake-weight" name="fondant-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('fondant-cake')">
+                                <option value="1kg" data-price="70.00">1kg -₹1000 </option>
+                                <option value="1.5kg" data-price="90.00">1.5kg -₹1800 </option>
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="fondant-cake-price">₹1000</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="12">
+                    <img src="glaze.jpeg" alt="Glaze Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Glaze Cake</h3>
+                        <p class="text-gray-600 mb-4">Smooth, glossy glaze over a delicious cake. A modern and elegant choice.</p>
+                        <div class="mb-4">
+                            <label for="glaze-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="glaze-cake-weight" name="glaze-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('glaze-cake')">
+                                <option value="1kg" data-price="28.00">1kg -₹950</option>
+                                <option value="1.5kg" data-price="40.00">1.5kg -₹1300 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="glaze-cake-price">₹950</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="eggless-dry-cakes" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Eggless & Dry Cakes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="13">
+                    <img src="eggless vanilla.jpeg" alt="Eggless Vanilla Delight" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Eggless Vanilla Delight</h3>
+                        <p class="text-gray-600 mb-4">Light and fluffy eggless vanilla cake, perfect for all dietary preferences.</p>
+                        <div class="mb-4">
+                            <label for="eggless-vanilla-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="eggless-vanilla-cake-weight" name="eggless-vanilla-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('eggless-vanilla-cake')">
+                                <option value="0.5kg" data-price="7.00">500g - ₹700</option>
+                                <option value="1kg" data-price="13.00">1kg - ₹1300</option>
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="eggless-vanilla-cake-price">₹700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="14">
+                    <img src="surprise.jpeg" alt="Midnight Chocolate Surprise" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Midnight Chocolate Surprise</h3>
+                        <p class="text-gray-600 mb-4">A rich, dark chocolate cake with a surprise filling, perfect for chocolate lovers.</p>
+                        <div class="mb-4">
+                            <label for="midnight-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="midnight-cake-weight" name="midnight-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('midnight-cake')">
+                                <option value="0.5kg" data-price="9.00">500g - ₹750</option>
+                                <option value="1kg" data-price="17.00">1kg -₹1300 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="midnight-cake-price">₹750</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="15">
+                    <img src="dry.jpeg" alt="Classic Dry Fruit Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Classic Dry Fruit Cake</h3>
+                        <p class="text-gray-600 mb-4">A traditional dry fruit cake, packed with assorted dried fruits and nuts.</p>
+                        <div class="mb-4">
+                            <label for="dry-fruit-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="dry-fruit-cake-weight" name="dry-fruit-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('dry-fruit-cake')">
+                                <option value="0.5kg" data-price="8.50">500g -₹900</option>
+                                <option value="1kg" data-price="16.00">1kg -₹1300</option>
+                               
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="dry-fruit-cake-price">₹900</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="pastries-desserts" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Pastries & Desserts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="16">
+                    <img src="ccake.jpg" alt="Assorted Cupcakes" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Assorted Cupcakes (Box of 6)</h3>
+                        <p class="text-gray-600 mb-4">A delightful assortment of gourmet cupcakes, perfect for sharing.</p>
+                        <div class="mb-4">
+                            <label for="cupcake-quantity" class="block text-gray-700 text-sm font-bold mb-2">Select Quantity:</label>
+                            <select id="cupcake-quantity" name="cupcake-quantity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="1" data-price="25.00">1 Box - 	₹550</option>
+                                <option value="2" data-price="45.00">2 Boxes -	₹1000 </option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="cupcake-price">₹550</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="17">
+                    <img src="pastry.jpeg" alt="Chocolate Pastry" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Chocolate Truffle Pastry (Each)</h3>
+                        <p class="text-gray-600 mb-4">Indulge in a rich, layered chocolate truffle pastry.</p>
+                        <div class="mb-4">
+                            <label for="pastry-quantity" class="block text-gray-700 text-sm font-bold mb-2">Select Quantity:</label>
+                            <select id="pastry-quantity" name="pastry-quantity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="1" data-price="4.50">1 Piece -₹200 </option>
+                                <option value="4" data-price="16.00">4 Pieces -₹800</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="pastry-price">	₹200</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="18">
+                    <img src="jar cake.jpeg" alt="Red Velvet Jar Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Red Velvet Jar Cake</h3>
+                        <p class="text-gray-600 mb-4">Layers of red velvet cake and cream cheese frosting in a convenient jar.</p>
+                        <div class="mb-4">
+                            <label for="jar-cake-quantity" class="block text-gray-700 text-sm font-bold mb-2">Select Quantity:</label>
+                            <select id="jar-cake-quantity" name="jar-cake-quantity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="1" data-price="6.00">1 Jar -	₹300 </option>
+                                <option value="3" data-price="16.50">3 Jars -₹900 </option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="jar-cake-price">₹300</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="premium-flavours" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Fusion & Premium Flavours</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="19">
+                    <img src="dchococake.jpeg" alt="Decadent Chocolate Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Decadent Chocolate Cake</h3>
+                        <p class="text-gray-600 mb-4">Our signature rich, moist chocolate cake for the ultimate indulgence.</p>
+                        <div class="mb-4">
+                            <label for="flavour-chocolate-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="flavour-chocolate-cake-weight" name="flavour-chocolate-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('flavour-chocolate-cake')">
+                                <option value="0.5kg" data-price="7.50">500g - 	₹650/option>
+                                <option value="1kg" data-price="14.00">1kg - 	₹1200</option>
+                                <option value="1.5kg" data-price="20.00">1.5kg - ₹1700</option>
+           
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="flavour-chocolate-cake-price">	₹650</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="20">
+                    <img src="choco truffle.jpeg" alt="Chocolate Truffle Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Decadent Chocolate Truffle Cake</h3>
+                        <p class="text-gray-600 mb-4">Rich, dense chocolate truffle cake with a smooth ganache glaze.</p>
+                        <div class="mb-4">
+                            <label for="chocolate-truffle-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="chocolate-truffle-cake-weight" name="chocolate-truffle-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('chocolate-truffle-cake')">
+                                <option value="0.5kg" data-price="9.50">500g -₹750 </option>
+                                <option value="1kg" data-price="18.00">1kg -₹1100 </option>
+                                <option value="1.5kg" data-price="25.50">1.5kg -₹1300 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="chocolate-truffle-cake-price">₹750</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="21">
+                    <img src="kitkat.jpeg" alt="Crunchy Kitkat Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Crunchy Kitkat Cake</h3>
+                        <p class="text-gray-600 mb-4">Chocolate cake surrounded by KitKat bars and topped with gems.</p>
+                        <div class="mb-4">
+                            <label for="kitkat-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="kitkat-cake-weight" name="kitkat-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('kitkat-cake')">
+                                <option value="0.5kg" data-price="10.00">500g -₹700 </option>
+                                <option value="1kg" data-price="19.00">1kg -₹1300 </option>
+                                <option value="1.5kg" data-price="27.00">1.5kg -₹1800 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="kitkat-cake-price">₹700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="22">
+                    <img src="ferrero rocher.jpeg" alt="Ferrero Rocher Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Ferrero Rocher Cake</h3>
+                        <p class="text-gray-600 mb-4">Indulgent chocolate cake with Ferrero Rocher pieces and hazelnut cream.</p>
+                        <div class="mb-4">
+                            <label for="ferrerorocher-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="ferrerorocher-cake-weight" name="ferrerorocher-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('ferrerorocher-cake')">
+                                <option value="0.5kg" data-price="12.00">500g - ₹700 </option>
+                                <option value="1kg" data-price="23.00">1kg - ₹1400</option>
+                                <option value="1.5kg" data-price="33.00">1.5kg - ₹1800 </option>
+                           
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="ferrerorocher-cake-price"> ₹700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="23">
+                    <img src="oreo.jpeg" alt="Cookies & Cream Oreo Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Cookies & Cream Oreo Cake</h3>
+                        <p class="text-gray-600 mb-4">Creamy cake with crushed Oreo cookies, a classic flavor combination.</p>
+                        <div class="mb-4">
+                            <label for="oreo-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="oreo-cake-weight" name="oreo-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('oreo-cake')">
+                                <option value="0.5kg" data-price="10.50">500g -  ₹600</option>
+                                <option value="1kg" data-price="19.99">1kg - ₹1100 </option>
+                                <option value="1.5kg" data-price="28.50">1.5kg - ₹1600 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="oreo-cake-price"> ₹600</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="24">
+                    <img src="cheese.jpeg" alt="Classic New York Cheesecake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Classic New York Cheesecake</h3>
+                        <p class="text-gray-600 mb-4">Rich, creamy, and smooth cheesecake with a graham cracker crust.</p>
+                        <div class="mb-4">
+                            <label for="cheesecake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Size:</label>
+                            <select id="cheesecake-weight" name="cheesecake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('cheesecake')">
+                                <option value="small" data-price="28.00">Small (0.75kg) -₹600 </option>
+                                <option value="medium" data-price="45.00">Medium (1.25kg) -₹1300  </option>
+                               
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="cheesecake-price">₹600 </span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="25">
+                    <img src="rasmalai.jpeg" alt="Indian Rasmalai Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Indian Rasmalai Cake</h3>
+                        <p class="text-gray-600 mb-4">A unique fusion cake with the flavors of traditional Indian rasmalai.</p>
+                        <div class="mb-4">
+                            <label for="rasmalai-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="rasmalai-cake-weight" name="rasmalai-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('rasmalai-cake')">
+                                <option value="0.5kg" data-price="12.50">500g - ₹899</option>
+                                <option value="1kg" data-price="24.00">1kg -₹1800 </option>
+                                <option value="1.5kg" data-price="34.00">1.5kg -₹2000</option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="rasmalai-cake-price">₹899</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="26">
+                    <img src="browni.jpeg" alt="Decadent Fudge Brownie Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Decadent Fudge Brownie Cake</h3>
+                        <p class="text-gray-600 mb-4">Rich, gooey fudge brownie cake, a dream for chocolate lovers.</p>
+                        <div class="mb-4">
+                            <label for="chocolate-overload-brownie-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="chocolate-overload-brownie-cake-weight" name="chocolate-overload-brownie-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('chocolate-overload-brownie-cake')">
+                                <option value="0.5kg" data-price="10.00">500g - ₹600</option>
+                                <option value="1kg" data-price="19.50">1kg - ₹900</option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="chocolate-overload-brownie-cake-price">₹600</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="27">
+                    <img src="ive cream.jpeg" alt="Ice Cream Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Ice Cream Cake</h3>
+                        <p class="text-gray-600 mb-4">Layers of delicious ice cream and cake, a refreshing treat.</p>
+                        <div class="mb-4">
+                            <label for="ice-cream-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="ice-cream-cake-weight" name="ice-cream-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('ice-cream-cake')">
+                                <option value="0.75kg" data-price="18.00">750g -₹700 </option>
+                                <option value="1kg" data-price="25.00">1kg -₹1200 </option>
+                               
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="ice-cream-cake-price">₹1700</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="28">
+                    <img src="gulab jamun.jpeg" alt="Gulab Jamun Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Gulab Jamun Cake</h3>
+                        <p class="text-gray-600 mb-4">Soft cake infused with the flavors of gulab jamun, topped with mini gulab jamuns.</p>
+                        <div class="mb-4">
+                            <label for="gulab-jamun-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="gulab-jamun-cake-weight" name="gulab-jamun-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('gulab-jamun-cake')">
+                                <option value="0.5kg" data-price="13.00">500g - ₹799 </option>
+                                <option value="1kg" data-price="25.00">1kg - ₹1566</option>
+                             
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="gulab-jamun-cake-price"> ₹799</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="29">
+                    <img src="kaju katli.jpeg" alt="Kaju Katli Cake" class="w-full h-64 object-cover" id="kaju-katli-cake-image">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Kaju Katli Cake</h3>
+                        <p class="text-gray-600 mb-4">A rich cashew-based cake, a sweet indulgence with an Indian twist.</p>
+                        <div class="mb-4">
+                            <label for="kaju-katli-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="kaju-katli-cake-weight" name="kaju-katli-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('kaju-katli-cake')">
+                                <option value="0.5kg" data-price="14.00">500g -₹650 </option>
+                                <option value="1kg" data-price="27.00">1kg - ₹1200</option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="kaju-katli-cake-price">₹650</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="30">
+                    <img src="moti choor ladoo.jpeg" alt="Motichoor Ladoo Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Motichoor Ladoo Cake</h3>
+                        <p class="text-gray-600 mb-4">A delightful fusion cake combining the flavors of traditional Motichoor Ladoo.</p>
+                        <div class="mb-4">
+                            <label for="motichoor-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="motichoor-cake-weight" name="motichoor-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('motichoor-cake')">
+                                <option value="0.5kg" data-price="13.50">500g -₹995 </option>
+                                <option value="1kg" data-price="26.00">1kg -₹1200 </option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="motichoor-cake-price">	₹995</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="cakes-by-theme" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Cakes By Theme</h2>
+            <h3 class="text-4xl font-bold text-center mb-8 text-gray-800">Kids Cakes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="31">
+                    <img src="unicorn.jpeg" alt="Magical Unicorn Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Magical Unicorn Cake</h3>
+                        <p class="text-gray-600 mb-4">A whimsical cake adorned with a unicorn horn, ears, and colorful mane.</p>
+                        <div class="mb-4">
+                            <label for="unicorn-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="unicorn-cake-weight" name="unicorn-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('unicorn-cake')">
+                                <option value="1kg" data-price="55.00">1kg -₹795</option>
+                                <option value="1.5kg" data-price="70.00">1.5kg -₹1800</option>
+                           
+                            </select>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="unicorn-cake-price">₹795</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="32">
+                    <img src="princess.jpeg" alt="Enchanting Princess Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Enchanting Princess Cake</h3>
+                        <p class="text-gray-600 mb-4">A regal cake designed to resemble a beautiful princess gown, perfect for little royalty.</p>
+                        <div class="mb-4">
+                            <label for="princess-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="princess-cake-weight" name="princess-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('princess-cake')">
+                                <option value="1kg" data-price="60.00">1kg - ₹895 </option>
+                                <option value="1.5kg" data-price="75.00">1.5kg - ₹1500</option>
+                               
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="princess-cake-price"> ₹895</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="33">
+                    <img src="cartoon.jpeg" alt="Favorite Cartoon Character Cake" class="w-full h-64 object-cover" id="cartoon-cake-image">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Favorite Cartoon Character Cake</h3>
+                        <p class="text-gray-600 mb-4">Bring their favorite cartoon character to life on a delicious cake. Enter character name below.</p>
+                        <div class="mb-4">
+                            <label for="cartoon-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="cartoon-cake-weight" name="cartoon-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('cartoon-cake')">
+                                <option value="1kg" data-price="50.00">1kg - ₹1,200 </option>
+                                <option value="1.5kg" data-price="65.00">1.5kg -₹2000</option>
+                             
+                            </select>
+                         
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="cartoon-cake-price"> ₹1,200</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="yellow-strip"></div>
+
+        <section id="custom-cake" class="mb-12">
+            <h2 class="text-5xl font-extrabold text-center mb-10 text-gray-900">Custom Order Cake</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="34">
+                    <img src="custom.jpeg" alt="Custom Order Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Custom Order Cake</h3>
+                        <p class="text-gray-600 mb-4">Dream it, we'll bake it! Work with our team to create your unique custom cake. Enter details below.</p>
+                        <div class="mb-4">
+                            <label for="custom-cake-details" class="block text-gray-700 text-sm font-bold mb-2">Describe Your Custom Cake:</label>
+                            <textarea id="custom-cake-details" name="custom-cake-details" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., A 2-tier vanilla cake with blue frosting and edible stars"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="custom-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Desired Weight/Size (e.g., 2kg, 8 inch round):</label>
+                            <input type="text" id="custom-cake-weight" name="custom-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 2kg or 2000g">
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-3xl font-bold cake-price">Price: Custom Quote</span>
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Request Custom Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="35">
+                    <img src="fruit.jpeg" alt="Custom Fruit Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Custom Fruit Cake</h3>
+                        <p class="text-gray-600 mb-4">Design your own fruit cake with your choice of fruit. Enter your desired fruit below.</p>
+                        <div class="mb-4">
+                            <label for="fruit-cake-input" class="block text-gray-700 text-sm font-bold mb-2">Enter Custom Fruit:</label>
+                            <input type="text" id="fruit-cake-input" name="fruit-cake-input" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., Strawberry, Mango, Blueberry" oninput="updateFruitCakeDisplay()">
+                            <p class="text-gray-600 text-sm mt-1">Specify your favorite fruit (e.g., Apple, Cherry,mixed fruit-cake ,any combination of fruit etc. ).</p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="fruit-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="fruit-cake-weight" name="fruit-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('fruit-cake')">
+                                <option value="1kg" data-price="35.00">1kg -₹600</option>
+                                <option value="1.5kg" data-price="48.00">1.5kg -₹1300 </option>
+                                <option value="custom" data-price="0.00">Custom Weight</option>
+                            </select>
+                            <div id="fruit-cake-custom-weight-fields" class="mt-3 hidden">
+                                <label for="fruit-custom-weight-input" class="block text-gray-700 text-sm font-bold mb-2">Enter Custom Weight (e.g., 2kg):</label>
+                                <input type="text" id="fruit-custom-weight-input" name="fruit-custom-weight-input" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 2kg or 2000g">
+                                <p class="text-gray-600 text-sm mt-1">Price will be quoted based on custom weight.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="fruit-cake-price"> ₹1,499</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cake-card" data-id="36">
+                    <img src="symbol.jpeg" alt="Custom Symbol Cake" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-3xl font-semibold mb-3 text-gray-800 cake-name">Custom Symbol Cake</h3>
+                        <p class="text-gray-600 mb-4">Celebrate with a cake featuring a custom symbol, logo, or design. Describe below.</p>
+                        <div class="mb-4">
+                            <label for="symbol-cake-input" class="block text-gray-700 text-sm font-bold mb-2">Describe Custom Symbol/Design:</label>
+                            <input type="text" id="symbol-cake-input" name="symbol-cake-input" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., Company logo, favorite sports team emblem" oninput="updateSymbolCakeDisplay()">
+                            <p class="text-gray-600 text-sm mt-1">Specify your desired symbol or design.</p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="symbol-cake-weight" class="block text-gray-700 text-sm font-bold mb-2">Select Weight:</label>
+                            <select id="symbol-cake-weight" name="symbol-cake-weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCustomWeight('symbol-cake')">
+                                <option value="1kg" data-price="40.00">1kg -₹1,200</option>
+                                <option value="1.5kg" data-price="55.00">1.5kg -₹1,900</option>
+                                <option value="custom" data-price="0.00">Custom Weight</option>
+                            </select>
+                            <div id="symbol-cake-custom-weight-fields" class="mt-3 hidden">
+                                <label for="symbol-custom-weight-input" class="block text-gray-700 text-sm font-bold mb-2">Enter Custom Weight (e.g., 2kg):</label>
+                                <input type="text" id="symbol-custom-weight-input" name="symbol-custom-weight-input" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 2kg or 2000g">
+                                <p class="text-gray-600 text-sm mt-1">Price will be quoted based on custom weight.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 text-3xl font-bold cake-price" id="symbol-cake-price">₹1,200</span>
+                            <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-lg font-semibold transition duration-300 add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <p>&copy; 2024 The Cake Studio. All rights reserved.</p>
+       
+    </footer>
+
+    <script>
+        // Cake data (simplified for this page)
+        const cakes = [
+            { id: 1, name: 'Chocolate Cake', price: 0.00, image: 'chocolate.jpeg' },
+            { id: 2, name: 'Mocha Coffee Cake', price: 0.00, image: 'mocha.jpeg' },
+            { id: 3, name: 'Black Forest Cake', price: 0.00, image: 'black forest cake.jpeg' },
+            { id: 4, name: 'Butterscotch Caramel Crunch Cake', price: 0.00, image: 'butter scotch cake.jpeg' },
+            { id: 5, name: 'Red Velvet Delight Cake', price: 0.00, image: 'red velvet cake.jpeg' },
+            { id: 6, name: 'Classic Vanilla Bean Cake', price: 0.00, image: 'vanilla.jpg' },
+            { id: 7, name: 'Spring Blossom Floral Cake', price: 0.00, image: 'floral.jpeg' },
+            { id: 8, name: 'Fresh Flowers Cake', price: 0.00, image: 'fresh flower.jpeg' },
+            { id: 9, name: 'Flower Basket Cake', price: 0.00, image: 'flower basket.jpeg' },
+            { id: 10, name: 'Sparkle Drip Opulence Cake', price: 0.00, image: 'drip.jpeg' },
+            { id: 11, name: 'Elegant Fondant Cake', price: 0.00, image: 'fondant.jpeg' },
+            { id: 12, name: 'Glaze Cake', price: 0.00, image: 'glaze.jpeg' },
+            { id: 13, name: 'Eggless Vanilla Delight', price: 0.00, image: 'eggless vanilla.jpeg' },
+            { id: 14, name: 'Midnight Chocolate Surprise', price: 0.00, image: 'midnight chocolate.jpeg' },
+            { id: 15, name: 'Classic Dry Fruit Cake', price: 0.00, image: 'dry fruit.jpeg' },
+            { id: 16, name: 'Assorted Cupcakes (Box of 6)', price: 0.00, image: 'cupcake.jpeg' },
+            { id: 17, name: 'Chocolate Truffle Pastry (Each)', price: 0.00, image: 'pastry.jpeg' },
+            { id: 18, name: 'Red Velvet Jar Cake', price: 0.00, image: 'red velvet jar.jpeg' },
+            { id: 19, name: 'Decadent Chocolate Cake', price: 0.00, image: 'regular chocolate.jpeg' },
+            { id: 20, name: 'Decadent Chocolate Truffle Cake', price: 0.00, image: 'choco truffle.jpeg' },
+            { id: 21, name: 'Crunchy Kitkat Cake', price: 0.00, image: 'kitkat.jpeg' },
+            { id: 22, name: 'Ferrero Rocher Cake', price: 0.00, image: 'ferrero rocher.jpeg' },
+            { id: 23, name: 'Cookies & Cream Oreo Cake', price: 0.00, image: 'oreo.jpeg' },
+            { id: 24, name: 'Classic New York Cheesecake', price: 0.00, image: 'cheesecake.jpeg' },
+            { id: 25, name: 'Indian Rasmalai Cake', price: 0.00, image: 'rasmalai.jpeg' },
+            { id: 26, name: 'Decadent Fudge Brownie Cake', price: 0.00, image: 'brownie.jpeg' },
+            { id: 27, name: 'Ice Cream Cake', price: 0.00, image: 'ice cream.jpeg' },
+            { id: 28, name: 'Gulab Jamun Cake', price: 0.00, image: 'gulab jamun.jpeg' },
+            { id: 29, name: 'Kaju Katli Cake', price: 0.00, image: 'kaju katli.jpeg' },
+            { id: 30, name: 'Motichoor Ladoo Cake', price: 0.00, image: 'motichoor.jpeg' },
+            { id: 31, name: 'Magical Unicorn Cake', price: 0.00, image: 'unicorn.jpeg' },
+            { id: 32, name: 'Enchanting Princess Cake', price: 0.00, image: 'princess.jpeg' },
+            { id: 33, name: 'Favorite Cartoon Character Cake', price: 0.00, image: 'cartoon.jpeg' },
+            { id: 34, name: 'Custom Order Cake', price: 0.00, image: 'custom.jpeg' },
+            { id: 35, name: 'Custom Fruit Cake', price: 0.00, image: 'fruit.jpeg' },
+            { id: 36, name: 'Custom Symbol Cake', price: 0.00, image: 'symbol.jpeg' }
+        ];
+
+        // Cake prices (for regular and flavor cakes)
+        const cakePrices = {
+  'regular-chocolate-cake': { '0.5kg': 600, '1kg': 1200, '1.5kg': 1800 },
+  'coffee-cake': { '0.5kg': 500, '1kg': 1000 },
+  'flavour-black-forest-cake': { '0.5kg': 450, '1kg': 850, '1.5kg': 1250 },
+  'flavour-butterscotch-cake': { '0.5kg':400, '1kg': 700, '1.5kg': 900 },
+  'flavour-red-velvet-cake': { '0.5kg': 650, '1kg': 1200, '1.5kg': 1700 },
+  'regular-vanilla-cake': { '0.5kg': 600, '1kg': 1100, '1.5kg': 1600 },
+  'floral-blossom-cake': { '1kg': 800, '1.5kg': 1400 },
+  'fresh-flowers-cake': { '1kg': 900, '1.5kg': 1600 },
+  'flower-basket-cake': { '1kg': 850, '1.5kg': 1300 },
+  'sparkle-drip-cake': { '1kg': 700, '1.5kg': 1200 },
+  'fondant-cake': { '1kg': 1000, '1.5kg': 1800 },
+  'glaze-cake': { '1kg': 950, '1.5kg': 1400 },
+  'eggless-vanilla-cake': { '0.5kg': 700, '1kg': 1300 },
+  'midnight-cake': { '0.5kg': 750, '1kg': 1300 },
+  'dry-fruit-cake': { '0.5kg': 900, '1kg': 1300 },
+  'cupcake': { '1': 550, '2': 1000 },
+  'pastry': { '1': 200, '4': 800 },
+  'jar-cake': { '1': 300, '3': 900 },
+  'flavour-chocolate-cake': { '0.5kg': 650, '1kg': 1200, '1.5kg': 1700 },
+  'chocolate-truffle-cake': { '0.5kg': 750, '1kg': 1100, '1.5kg': 1300 },
+  'kitkat-cake': { '0.5kg': 700, '1kg': 1300, '1.5kg': 1800 },
+  'ferrerorocher-cake': { '0.5kg': 700, '1kg': 1400, '1.5kg': 1800 },
+  'oreo-cake': { '0.5kg': 600, '1kg': 1100, '1.5kg': 1600 },
+  'cheesecake': { 'small': 600, 'medium': 1300 },
+  'rasmalai-cake': { '0.5kg': 899, '1kg': 1800, '1.5kg': 2000 },
+  'chocolate-overload-brownie-cake': { '0.5kg': 600, '1kg': 900 },
+  'ice-cream-cake': { '0.75kg': 700, '1kg': 1200 },
+  'gulab-jamun-cake': { '0.5kg': 799, '1kg': 1566 },
+  'kaju-katli-cake': { '0.5kg': 650, '1kg': 1200 },
+  'motichoor-cake': { '0.5kg': 995, '1kg': 1200 },
+  'unicorn-cake': { '1kg': 795, '1.5kg': 1800 },
+  'princess-cake': { '1kg': 895, '1.5kg': 1500 },
+  'cartoon-cake': { '1kg': 1200, '1.5kg': 2000 },
+  'fruit-cake': { '1kg': 600, '1.5kg': 1300 },
+  'symbol-cake': { '1kg': 1200, '1.5kg': 1900 }
+};
+
+        function toggleCustomWeight(cakeIdPrefix) {
+            const selectElement = document.getElementById(cakeIdPrefix + '-weight');
+            const customFields = document.getElementById(cakeIdPrefix + '-custom-weight-fields');
+            const priceSpan = document.getElementById(cakeIdPrefix + '-price');
+
+            if (selectElement.value === 'custom') {
+                if (customFields) customFields.classList.remove('hidden');
+                if (priceSpan) {
+                    priceSpan.textContent = 'Custom Quote';
+                    priceSpan.classList.remove('text-red-600');
+                    priceSpan.classList.add('text-gray-500');
+                }
+            } else {
+                if (customFields) customFields.classList.add('hidden');
+                const selectedValue = selectElement.value;
+                const price = cakePrices[cakeIdPrefix] ? cakePrices[cakeIdPrefix][selectedValue] : undefined;
+                if (priceSpan) {
+                    if (price !== undefined) {
+                        priceSpan.textContent = `₹${price.toFixed(2)}`;
+                        priceSpan.classList.remove('text-gray-500');
+                        priceSpan.classList.add('text-red-600');
+                    } else {
+                        priceSpan.textContent = 'Price N/A';
+                        priceSpan.classList.remove('text-red-600');
+                        priceSpan.classList.add('text-gray-500');
+                    }
+                }
+            }
+        }
+
+        // --- Shopping Cart Functions ---
+        let cart = []; // Array to store items in the cart
+
+        function saveCartToLocalStorage() {
+            localStorage.setItem("shoppingCart", JSON.stringify(cart));
+        }
+
+        function loadCartFromLocalStorage() {
+            const storedCart = localStorage.getItem("shoppingCart");
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+        }
+
+        function addToCart(item) {
+            const existingItem = cart.find(cartItem => cartItem.id === item.id && cartItem.weight === item.weight);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            saveCartToLocalStorage();
+            updateCartCount();
+            alert(`${item.name} (${item.weight || item.quantityType || 'N/A'}) added to cart!`);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.querySelector("#cart-count");
+            if (badge) badge.innerText = count;
+        }
+
+        function initializeAddToCartButtons() {
+            document.querySelectorAll(".add-to-cart-btn").forEach(button => {
+                button.addEventListener("click", () => {
+                    const card = button.closest(".cake-card");
+                    const id = parseInt(card.dataset.id);
+                    const name = card.querySelector(".cake-name").innerText.trim();
+                    const image = card.querySelector("img").getAttribute("src");
+
+                    let price = 0;
+                    let selectedWeightOrQuantity = "N/A";
+                   
+                    const selectElement = card.querySelector("select");
+                    if (selectElement) {
+                        const selectedOption = selectElement.options[selectElement.selectedIndex];
+                        selectedWeightOrQuantity = selectedOption.value;
+                        if (selectedOption.value === 'custom') {
+                            // For custom, price is 0 and a quote is needed
+                            price = 0;
+                            selectedWeightOrQuantity = "Custom Quote";
+                        } else {
+                            price = parseFloat(selectedOption.dataset.price);
+                        }
+                    } else {
+                        // For items without weight/quantity selection (e.g., custom order button with only text fields)
+                        const priceSpan = card.querySelector(".cake-price");
+                        if (priceSpan && priceSpan.textContent.includes('₹')) {
+                            price = parseFloat(priceSpan.textContent.replace("₹", ""));
+                        } else {
+                            price = 0; // Default or for custom quotes
+                        }
+                    }
+
+                    addToCart({ id, name, price, image, weight: selectedWeightOrQuantity });
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize custom weight/price display for all cakes on page load
+            Object.keys(cakePrices).forEach(cakeIdPrefix => {
+                const selectElement = document.getElementById(cakeIdPrefix + '-weight');
+                if (selectElement) {
+                    // Check if a selected option exists and apply initial state
+                    if (selectElement.value === 'custom') {
+                        toggleCustomWeight(cakeIdPrefix);
+                    } else {
+                        const priceSpan = document.getElementById(cakeIdPrefix + '-price');
+                        const selectedValue = selectElement.value;
+                        const price = cakePrices[cakeIdPrefix] ? cakePrices[cakeIdPrefix][selectedValue] : undefined;
+                        if (priceSpan) {
+                            if (price !== undefined) {
+                                priceSpan.textContent = `₹${price.toFixed(2)}`;
+                                priceSpan.classList.remove('text-gray-500');
+                                priceSpan.classList.add('text-red-600');
+                            } else {
+                                priceSpan.textContent = 'Price N/A';
+                                priceSpan.classList.remove('text-red-600');
+                                priceSpan.classList.add('text-gray-500');
+                            }
+                        }
+                    }
+                }
+            });
+            initializeAddToCartButtons();
+            updateCartCount();
+        });
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+  button.addEventListener('click', async (e) => {
+    const card = e.target.closest('.cake-card');
+    const name = card.querySelector('.cake-name').textContent.trim();
+    const description = card.querySelector('p').textContent.trim();
+    const imageUrl = card.querySelector('img').getAttribute('src');
+    const select = card.querySelector('select');
+    const selectedOption = select.options[select.selectedIndex].value;
+    const price = parseFloat(select.options[select.selectedIndex].dataset.price);
+
+    const response = await fetch('/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, description, imageUrl, selectedOption, price })
+    });
+
+    const result = await response.json();
+    alert(result.message);
+  });
+});
+
+    </script>
+</body>
+</html>
